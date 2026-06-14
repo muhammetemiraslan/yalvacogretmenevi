@@ -123,3 +123,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Eğer ana dizinde 'static' klasörün varsa
+    # BASE_DIR / "myapp" / "static", # Eğer statik dosyaların sadece myapp içindeyse bunu açabilirsin
+]
