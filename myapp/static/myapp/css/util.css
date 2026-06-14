@@ -1,0 +1,16 @@
+.media.media-custom {
+    height: 100%;
+}
+
+.media.media-custom img {
+    width: 100%;
+    height: 220px;      /* sabit görsel yüksekliği */
+    object-fit: cover;  /* kırparak doldurur */
+    display: block;
+}
+
+.media.media-custom .media-body {
+    min-height: 180px;  /* kart yazı alanı dengeli olsun */
+    display: flex;
+    flex-direction: column;
+}

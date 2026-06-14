@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}yalvacogretmenevi{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <link rel="stylesheet" type="text/css"
+        href="//fonts.googleapis.com/css?family=|Roboto+Sans:400,700|Playfair+Display:400,700">
+
+    <link rel="stylesheet" href="{% static 'myapp/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/jquery.timepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/fancybox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/fonts/ionicons/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'myapp/fonts/ionicons/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/fonts/fontawesome/css/font-awesome.min.css' %}">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/util.css' %}">
+</head>
+
+<body>
+
+    <header class="site-header js-site-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="{% url 'index' %}">yalvacogretmenevi</a>
+                </div>
+                <div class="col-6 col-lg-8">
+
+                    <div class="site-menu-toggle js-site-menu-toggle" data-aos="fade">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="site-navbar js-site-navbar">
+                        <nav role="navigation">
+                            <div class="container">
+                                <div class="row full-height align-items-center">
+                                    <div class="col-md-6 mx-auto">
+                                        <ul class="list-unstyled menu">
+                                            <li
+                                                class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+                                                <a href="{% url 'index' %}">Anasayfa</a>
+                                            </li>
+                                            <li
+                                                class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                                                <a href="{% url 'about' %}">Hakkımızda</a>
+                                            </li>
+                                            <li
+                                                class="{% if request.resolver_match.url_name == 'rooms' %}active{% endif %}">
+                                                <a href="{% url 'rooms' %}">Odalar</a>
+                                            </li>
+                                            <li
+                                                class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                                                <a href="{% url 'contact' %}">İletişim</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer class="section footer-section">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-3 mb-5">
+                    <ul class="list-unstyled link">
+                        <li><a href="#">Hakkımızda</a></li>
+                        <li><a href="#">Terms &amp; Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Odalarımız</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-5">
+                    <ul class="list-unstyled link">
+                        <li><a href="{% url 'about' %}">Hakkımızda</a></li>
+                        <li><a href="#">Terms &amp; Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="{% url 'rooms' %}">Odalarımız</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-5">
+                    <ul class="list-unstyled link">
+                        <li><a href="{% url 'rooms' %}">Odalar &amp; Suiteler</a></li>
+                        <li><a href="{% url 'about' %}">Hakkımızda</a></li>
+                        <li><a href="{% url 'contact' %}">İletişim</a></li>
+                        <li><a href="{% url 'index' %}#restoran">Restorant</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-5 pr-md-5 contact-info">
+                    <p><span class="d-block"><span class="ion-ios-location h5 mr-3 text-primary"></span>Adres:</span>
+                        <span>
+                            Abacılar, 32420 <br> Yalvaç/Isparta</span>
+                    </p>
+                    <p><span class="d-block"><span class="ion-ios-telephone h5 mr-3 text-primary"></span>Telefon:</span>
+                        <span>
+                            (0246) 441 28 22</span>
+                    </p>
+                    <p><span class="d-block"><span class="ion-ios-email h5 mr-3 text-primary"></span>Email:</span>
+                        <span>
+                            info@yalvacogretmenevi.com</span>
+                    </p>
+                </div>
+            </div>
+            <div class="row pt-5">
+                <p class="col-md-6 text-left">
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> Tüm hakları saklıdır | yalvacogretmenevi
+                    <i class="icon-heart-o" aria-hidden="true"></i>
+                </p>
+
+                <p class="col-md-6 text-right social">
+                    <a href="https://www.instagram.com/yalvacogr/"><span class="fa fa-instagram"></span></a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'myapp/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'myapp/js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'myapp/js/popper.min.js' %}"></script>
+    <script src="{% static 'myapp/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'myapp/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'myapp/js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'myapp/js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'myapp/js/aos.js' %}"></script>
+    <script src="{% static 'myapp/js/bootstrap-datepicker.js' %}"></script>
+    <script src="{% static 'myapp/js/jquery.timepicker.min.js' %}"></script>
+    <script src="{% static 'myapp/js/main.js' %}"></script>
+</body>
+
+</html>

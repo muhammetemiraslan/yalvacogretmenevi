@@ -1,0 +1,398 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}yalvacogretmenevi{% endblock %}
+
+{% block content %}
+
+<section class="site-hero overlay" style="background-image: url({% static 'myapp/images/ylvc/3.webp' %})"
+    data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row site-hero-inner justify-content-center align-items-center">
+            <div class="col-md-10 text-center" data-aos="fade-up">
+                <span class="custom-caption text-uppercase text-white d-block mb-3">
+                    YALVAÇ ÖĞRETMENEVİ
+                </span>
+                <h1 class="heading">
+                    Konforlu ve Güvenilir Konaklama
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <a class="mouse smoothscroll" href="#next">
+        <div class="mouse-icon">
+            <span class="mouse-wheel"></span>
+        </div>
+    </a>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-lg-7 ml-auto order-lg-2 position-relative mb-5" data-aos="fade-up">
+                <figure class="img-absolute">
+                    <img src="{% static 'myapp/images/ylvc/yemek.webp' %}" alt="Image" class="img-fluid">
+                </figure>
+                <img src="{% static 'myapp/images/ylvc/3.webp' %}" alt="Image" class="img-fluid rounded">
+            </div>
+            <div class="col-md-12 col-lg-4 order-lg-1" data-aos="fade-up">
+                <h2 class="heading">Yalvaç Öğretmenevi'ne Hoş Geldiniz</h2>
+                <p class="mb-4">
+                    Yalvaç Öğretmenevi; öğretmenlerimize, kamu personeline ve tüm misafirlerimize
+                    güvenli, temiz ve konforlu konaklama hizmeti sunmaktadır. Merkezi konumu,
+                    güler yüzlü personeli ve uygun fiyat politikası ile Yalvaç'ta konaklama
+                    ihtiyaçlarına kaliteli çözümler üretmektedir.
+                </p>
+                <p>
+                    <a href="#" class="btn btn-primary text-white py-2 mr-3">
+                        Hakkımızda
+                    </a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-md-7">
+                <h2 class="heading" data-aos="fade-up">Odalarımız</h2>
+                <p data-aos="fade-up" data-aos-delay="100"><span class="text-uppercase letter-spacing-1">
+                        Güncel fiyat için iletişime geçiniz
+                    </span></p>
+            </div>
+        </div>
+        <div class="row">
+            {% for room in rooms %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <a href="{% url 'rooms' %}" class="room">
+                    <figure class="img-wrap room-img-wrap">
+                        <img src="{{ room.image.url }}" alt="{{ room.name }}" class="img-fluid mb-3 room-img">
+                    </figure>
+                    <div class="p-3 text-center room-info">
+                        <h2>{{ room.name }}</h2>
+                        <p>{{ room.description }}</p>
+                        <span class="text-uppercase letter-spacing-1">{{ room.price }}₺</span>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<section class="section slider-section bg-light">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-md-7">
+                <h2 class="heading" data-aos="fade-up">
+                    Fotoğraf Galerisi
+                </h2>
+                <p data-aos="fade-up" data-aos-delay="100">
+                    Yalvaç Öğretmenevi'nden görüntüler.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="home-slider major-caousel owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
+                    {% for img in gallery %}
+                    <div class="slider-item">
+                        <a href="{{ img.image.url }}" data-fancybox="images" data-caption="{{ img.caption }}"><img
+                                src="{{ img.image.url }}" alt="{{ img.caption }}" class="img-fluid"></a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="section bg-image overlay" style="background-image: url('{% static 'myapp/images/hero_3.jpg' %}');">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-md-7">
+                <h2 class="heading text-white" data-aos="fade">
+                    Restoran ve Kafeterya
+                </h2>
+                <p class="text-white" data-aos="fade" data-aos-delay="100">
+                    Misafirlerimize kahvaltı, öğle ve akşam yemeği hizmeti sunulmaktadır.
+                </p>
+            </div>
+        </div>
+        <div class="food-menu-tabs" id="restoran" data-aos="fade">
+            <ul class="nav nav-tabs mb-5" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active letter-spacing-2" id="mains-tab" data-toggle="tab" href="#mains"
+                        role="tab" aria-controls="mains" aria-selected="true">Ana yemek</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link letter-spacing-2" id="desserts-tab" data-toggle="tab" href="#desserts" role="tab"
+                        aria-controls="desserts" aria-selected="false">Tatlı</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link letter-spacing-2" id="drinks-tab" data-toggle="tab" href="#drinks" role="tab"
+                        aria-controls="drinks" aria-selected="false">İçecek</a>
+                </li>
+            </ul>
+            <div class="tab-content py-5" id="myTabContent">
+
+                <div class="tab-pane fade show active text-left" id="mains" role="tabpanel" aria-labelledby="mains-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {% for item in mains %}
+                            {% if forloop.counter <= mains|length|add:"-1"|add:"1" and forloop.counter0|divisibleby:2 %}
+                                <div class="food-menu mb-5">
+                                <span class="d-block text-primary h4 mb-3">₺{{ item.price }}</span>
+                                <h3 class="text-white"><a href="#" class="text-white">{{ item.name }}</a></h3>
+                                <p class="text-white text-opacity-7">{{ item.description }}</p>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-6">
+                        {% for item in mains %}
+                        {% if not forloop.counter0|divisibleby:2 %}
+                        <div class="food-menu mb-5">
+                            <span class="d-block text-primary h4 mb-3">₺{{ item.price }}</span>
+                            <h3 class="text-white"><a href="#" class="text-white">{{ item.name }}</a></h3>
+                            <p class="text-white text-opacity-7">{{ item.description }}</p>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade text-left" id="desserts" role="tabpanel" aria-labelledby="desserts-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        {% for item in desserts %}
+                        {% if forloop.counter0|divisibleby:2 %}
+                        <div class="food-menu mb-5">
+                            <span class="d-block text-primary h4 mb-3">₺{{ item.price }}</span>
+                            <h3 class="text-white"><a href="#" class="text-white">{{ item.name }}</a></h3>
+                            <p class="text-white text-opacity-7">{{ item.description }}</p>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-6">
+                        {% for item in desserts %}
+                        {% if not forloop.counter0|divisibleby:2 %}
+                        <div class="food-menu mb-5">
+                            <span class="d-block text-primary h4 mb-3">₺{{ item.price }}</span>
+                            <h3 class="text-white"><a href="#" class="text-white">{{ item.name }}</a></h3>
+                            <p class="text-white text-opacity-7">{{ item.description }}</p>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade text-left" id="drinks" role="tabpanel" aria-labelledby="drinks-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        {% for item in drinks %}
+                        {% if forloop.counter0|divisibleby:2 %}
+                        <div class="food-menu mb-5">
+                            <span class="d-block text-primary h4 mb-3">₺{{ item.price }}</span>
+                            <h3 class="text-white"><a href="#" class="text-white">{{ item.name }}</a></h3>
+                            <p class="text-white text-opacity-7">{{ item.description }}</p>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-6">
+                        {% for item in drinks %}
+                        {% if not forloop.counter0|divisibleby:2 %}
+                        <div class="food-menu mb-5">
+                            <span class="d-block text-primary h4 mb-3">₺{{ item.price }}</span>
+                            <h3 class="text-white"><a href="#" class="text-white">{{ item.name }}</a></h3>
+                            <p class="text-white text-opacity-7">{{ item.description }}</p>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</section>
+
+<section class="section testimonial-section">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-md-7">
+                <h2 class="heading" data-aos="fade-up">Müşteri Yorumları</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="js-carousel-2 owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
+
+                <div class="testimonial text-center slider-item">
+                    <div class="author-image mb-3">
+                        <img src="{% static 'myapp/ylvc/kadro/mansetresim.png' %}" alt="Image placeholder"
+                            class="rounded-circle mx-auto">
+                    </div>
+                    <blockquote>
+                        <p>&ldquo;Temiz hijyenik gayet güzel ve uygun bir konaklama merkezi çalışanlarından yönetime
+                            kadar herkes
+                            gayet güleryüzlü ve anlayışlı resepsiyon görevlisi yavuz bey çok ilgiliydi herkonuda
+                            yardımcı olan bir
+                            görevliydi teşekkürler.&rdquo;</p>
+                    </blockquote>
+                    <p><em>&mdash; Müşteri</em></p>
+                </div>
+
+                <div class="testimonial text-center slider-item">
+                    <div class="author-image mb-3">
+                        <img src="{% static 'myapp/ylvc/kadro/mansetresim.png' %}" alt="Image placeholder"
+                            class="rounded-circle mx-auto">
+                    </div>
+                    <blockquote>
+                        <p>&ldquo;Müdürü olan Muhammer hoca , aldığı maaşın hakkını vermek adına , çok güzel hizmet
+                            verdiriyor
+                            kuruma, fiyatlar ekonomik , odalar tertemiz, duş sistemleri şahane, kahvaltı çeşitli
+                            hijyenik ve yeterli
+                            , çalışanlar saygılı , ve en iyisi de içeride mutfak bölümünde el yapımı çeşitli ürünler çok
+                            cüzzi
+                            fiyatlarla satışa sunulmuş , aynısına denk gelemiyeceğiniz ürünler bunlar. Öğretmenevine
+                            ayrı bir ahenk
+                            katmış&rdquo;</p>
+                    </blockquote>
+                    <p><em>&mdash; Müşteri</em></p>
+                </div>
+
+                <div class="testimonial text-center slider-item">
+                    <div class="author-image mb-3">
+                        <img src="{% static 'myapp/ylvc/kadro/mansetresim.png' %}" alt="Image placeholder"
+                            class="rounded-circle mx-auto">
+                    </div>
+                    <blockquote>
+                        <p>&ldquo;emiz hijyenik gayet güzel ve uygun bir konaklama merkezi çalışanlarından yönetime
+                            kadar herkes
+                            gayet güleryüzlü ve anlayışlı resepsiyon görevlisi yavuz bey çok ilgiliydi herkonuda
+                            yardımcı olan bir
+                            görevliydi teşekkürler.&rdquo;</p>
+                    </blockquote>
+                    <p><em>&mdash; Müşteri</em></p>
+                </div>
+
+                <div class="testimonial text-center slider-item">
+                    <div class="author-image mb-3">
+                        <img src="{% static 'myapp/ylvc/kadro/mansetresim.png' %}" alt="Image placeholder"
+                            class="rounded-circle mx-auto">
+                    </div>
+                    <blockquote>
+                        <p>&ldquo;Antalya'dan gelirken yorulup uğradığımız öğretmenevi.
+                            Akşam geç saatte aradık, yer olduğu için çok mutlu olduk.
+                            Güler yüzle karşılandık.
+                            Fiyatlar, günümüz şartlarına göre, uygun.
+                            Sabah kahvaltısı fiyata dahildi.
+                            Yalvaç'taki Nur Fırını'ndan patatesli ve haşhaşlı pide aldık ve asırlık çınar altında çayla
+                            birlikte
+                            yedik. Zamanı olanlara tavsiye ederim.
+                            Kısacası biz memnun kaldık..&rdquo;</p>
+                    </blockquote>
+                    <p><em>&mdash; Müşteri</em></p>
+                </div>
+
+                <div class="testimonial text-center slider-item">
+                    <div class="author-image mb-3">
+                        <img src="{% static 'myapp/ylvc/kadro/mansetresim.png' %}" alt="Image placeholder"
+                            class="rounded-circle mx-auto">
+                    </div>
+                    <blockquote>
+                        <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, accusamus! Facilis,
+                            fugit numquam
+                            autem cum eius rem excepturi omnis error totam tempore veritatis facere, debitis quos
+                            molestiae! Non,
+                            cupiditate autem!.&rdquo;</p>
+                    </blockquote>
+                    <p><em>&mdash; Müşteri</em></p>
+                </div>
+
+                <div class="testimonial text-center slider-item">
+                    <div class="author-image mb-3">
+                        <img src="{% static 'myapp/ylvc/kadro/mansetresim.png' %}" alt="Image placeholder"
+                            class="rounded-circle mx-auto">
+                    </div>
+                    <blockquote>
+                        <p>&ldquo;Her şey çok güzeldi. Çocuklarımızla 2 gece konakladık 4 kişiydik odalar 2'şer kişilik
+                            yan yana 2
+                            oda verdiler. İsterseniz az bir farkla Suit odada 4 kişide kalabilirsiniz dediler. Biz
+                            Standart odayı
+                            seçtik. Kahvaltı güzeldi Adile hanıma teşekür ediyoruz. İstanbuldan gelmeden önce yer
+                            ayırttık
+                            Resepsiyon görevlisi Yavuz Bey gayet ilgiliydi şansımıza otele girişimizde de o vardı.
+                            Hızlıca işlemleri
+                            yapıp bizi bekletmeden odamıza çıkardı. Yalvaçda Hamursuz yemeden çınar altında çay içmeden
+                            dönmeyin:)
+                            &rdquo;</p>
+                    </blockquote>
+                    <p><em>&mdash; Müşteri</em></p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section blog-post-entry bg-light">
+    <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-md-7">
+                <h2 class="heading" data-aos="fade-up">
+                    Duyurular
+                </h2>
+                <p data-aos="fade-up">
+                    Yalvaç Öğretmenevi'nden güncel haberler ve duyurular.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            {% for ann in announcements %}
+            <div class="col-lg-4 col-md-6 col-sm-6 col-12 post" data-aos="fade-up" data-aos-delay="100">
+                <div class="media media-custom d-block mb-4 h-100">
+                    <a href="#" class="mb-4 d-block"><img src="{{ ann.image.url }}" alt="{{ ann.title }}"
+                            class="img-fluid"></a>
+                    <div class="media-body">
+                        <span class="meta-post">{{ ann.date }}</span>
+                        <h2 class="mt-0 mb-3">
+                            <a href="#">{{ ann.title }}</a>
+                        </h2>
+                        <p>
+                            {{ ann.description }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section bg-image overlay" style="background-image: url('{% static 'myapp/images/hero_4.jpg' %}');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left" data-aos="fade-up">
+                <h2 class="text-white font-weight-bold">Rezervasyon için şimdi ara!</h2>
+            </div>
+            <div class="col-12 col-md-6 text-center text-md-right" data-aos="fade-up" data-aos-delay="200">
+                <a href="#" class="btn btn-outline-white-primary py-3 text-white px-5">+90 555 555 55 55</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Odalar - yalvacogretmenevi{% endblock %}
+
+{% block content %}
+
+
+<section class="section">
+    <div class="container">
+
+        <div class="row">
+            {% for room in rooms %}
+            <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up">
+                <a href="{% url 'room_detail' room.pk %}" class="room">
+                    <figure class="img-wrap room-img-wrap">
+                        <img src="{{ room.image.url }}" alt="{{ room.name }}" class="img-fluid mb-3 room-img">
+                    </figure>
+                    <div class="p-3 text-center room-info">
+                        <h2>{{ room.name }}</h2>
+                        <p>{{ room.description }}</p>
+                        <span class="text-uppercase letter-spacing-1">{{ room.price }}₺</span>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
