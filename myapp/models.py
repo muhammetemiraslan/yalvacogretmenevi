@@ -112,3 +112,20 @@ class ContactMessage(models.Model):
         verbose_name = "İletişim Mesajı"
         verbose_name_plural = "İletişim Mesajları"
         ordering = ['-created_at']
+    
+class HomePageContent(models.Model):
+    hero_image = models.ImageField(upload_to='homepage/', verbose_name="Hero Arka Plan Resmi")
+    hero_caption = models.CharField(max_length=100, default="YALVAÇ ÖĞRETMENEVİ", verbose_name="Üst Yazı")
+    hero_title = models.CharField(max_length=200, default="Konforlu ve Güvenilir Konaklama", verbose_name="Başlık")
+
+    welcome_image_1 = models.ImageField(upload_to='homepage/', verbose_name="Hoş Geldiniz Resmi 1 (büyük)")
+    welcome_image_2 = models.ImageField(upload_to='homepage/', verbose_name="Hoş Geldiniz Resmi 2 (üstte)")
+    welcome_title = models.CharField(max_length=200, default="Yalvaç Öğretmenevi'ne Hoş Geldiniz", verbose_name="Başlık")
+    welcome_text = models.TextField(verbose_name="Açıklama Yazısı")
+
+    def __str__(self):
+        return "Anasayfa İçeriği"
+
+    class Meta:
+        verbose_name = "Anasayfa İçeriği"
+        verbose_name_plural = "Anasayfa İçeriği"

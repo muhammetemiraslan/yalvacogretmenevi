@@ -21,3 +21,10 @@ class ContactMessageAdmin(admin.ModelAdmin):
     list_filter = ('is_read',)
 
 admin.site.register(ContactMessage, ContactMessageAdmin)
+
+from .models import (
+    Room, GalleryImage, Announcement, MenuItem,
+    HistoryEvent, RoomImage, ContactMessage, HomePageContent
+)
+
+admin.site.register(HomePageContent)

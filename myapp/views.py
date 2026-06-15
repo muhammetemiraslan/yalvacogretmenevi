@@ -2,6 +2,11 @@ from django.shortcuts import render
 from .models import Room, GalleryImage, Announcement, MenuItem, HistoryEvent
 from .forms import ContactForm
 
+from .models import (
+    Room, GalleryImage, Announcement, MenuItem,
+    HistoryEvent, RoomImage, ContactMessage, HomePageContent
+)
+
 def index(request):
     rooms = Room.objects.all()[:3]
     gallery = GalleryImage.objects.all()
@@ -9,6 +14,7 @@ def index(request):
     mains = MenuItem.objects.filter(category='mains')
     desserts = MenuItem.objects.filter(category='desserts')
     drinks = MenuItem.objects.filter(category='drinks')
+    homepage = HomePageContent.objects.first()
     return render(request, 'myapp/index.html', {
         'rooms': rooms,
         'gallery': gallery,
@@ -16,6 +22,7 @@ def index(request):
         'mains': mains,
         'desserts': desserts,
         'drinks': drinks,
+        'homepage': homepage,
     })
 
 def about(request):
