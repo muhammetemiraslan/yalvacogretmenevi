@@ -31,7 +31,6 @@
 </head>
 
 <body>
-
     <header class="site-header js-site-header">
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -67,6 +66,10 @@
                                                 class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
                                                 <a href="{% url 'contact' %}">İletişim</a>
                                             </li>
+                                            <li
+                                                class="{% if request.resolver_match.url_name == 'announcements' %}active{% endif %}">
+                                                <a href="{% url 'announcements' %}">Duyurular</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -85,26 +88,24 @@
             <div class="row mb-4">
                 <div class="col-md-3 mb-5">
                     <ul class="list-unstyled link">
-                        <li><a href="#">Hakkımızda</a></li>
-                        <li><a href="#">Terms &amp; Conditions</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Odalarımız</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 mb-5">
-                    <ul class="list-unstyled link">
                         <li><a href="{% url 'about' %}">Hakkımızda</a></li>
-                        <li><a href="#">Terms &amp; Conditions</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="{% url 'contact' %}">Terms &amp; Conditions</a></li>
+                        <li><a href="{% url 'contact' %}">Privacy Policy</a></li>
                         <li><a href="{% url 'rooms' %}">Odalarımız</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 mb-5">
                     <ul class="list-unstyled link">
-                        <li><a href="{% url 'rooms' %}">Odalar &amp; Suiteler</a></li>
-                        <li><a href="{% url 'about' %}">Hakkımızda</a></li>
-                        <li><a href="{% url 'contact' %}">İletişim</a></li>
-                        <li><a href="{% url 'index' %}#restoran">Restorant</a></li>
+                        <li><a href="{% url 'contact' %}">Misyonumuz</a></li>
+                        <li><a href="{% url 'contact' %}">Vizyonumuz</a></li>
+                        <li><a href="{% url 'announcements' %}">Duyurular</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-5">
+                    <ul class="list-unstyled link">
+                        <li><a href="{% url 'rooms' %}"></a></li>
+                        <li><a href="{% url 'about' %}"></a></li>
+                        <li><a href="{% url 'contact' %}"></a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 mb-5 pr-md-5 contact-info">

@@ -241,7 +241,7 @@
 
                 <div class="testimonial text-center slider-item">
                     <div class="author-image mb-3">
-                        <img src="{% static 'myapp/ylvc/kadro/mansetresim.png' %}" alt="Image placeholder"
+                        <img src="{% static 'myapp/images/ylvc/kadro/mansetresim.png' %}" alt="Image placeholder"
                             class="rounded-circle mx-auto">
                     </div>
                     <blockquote>
@@ -255,7 +255,7 @@
 
                 <div class="testimonial text-center slider-item">
                     <div class="author-image mb-3">
-                        <img src="{% static 'myapp/ylvc/kadro/mansetresim.png' %}" alt="Image placeholder"
+                        <img src="{% static 'myapp/images/ylvc/kadro/mansetresim.png' %}" alt="Image placeholder"
                             class="rounded-circle mx-auto">
                     </div>
                     <blockquote>
@@ -273,7 +273,7 @@
 
                 <div class="testimonial text-center slider-item">
                     <div class="author-image mb-3">
-                        <img src="{% static 'myapp/ylvc/kadro/mansetresim.png' %}" alt="Image placeholder"
+                        <img src="{% static 'myapp/images/ylvc/kadro/mansetresim.png' %}" alt="Image placeholder"
                             class="rounded-circle mx-auto">
                     </div>
                     <blockquote>
@@ -289,7 +289,7 @@
 
                 <div class="testimonial text-center slider-item">
                     <div class="author-image mb-3">
-                        <img src="{% static 'myapp/ylvc/kadro/mansetresim.png' %}" alt="Image placeholder"
+                        <img src="{% static 'myapp/images/ylvc/kadro/mansetresim.png' %}" alt="Image placeholder"
                             class="rounded-circle mx-auto">
                     </div>
                     <blockquote>
@@ -323,16 +323,20 @@
             {% for ann in announcements %}
             <div class="col-lg-4 col-md-6 col-sm-6 col-12 post" data-aos="fade-up" data-aos-delay="100">
                 <div class="media media-custom d-block mb-4 h-100">
-                    <a href="#" class="mb-4 d-block"><img src="{{ ann.image.url }}" alt="{{ ann.title }}"
-                            class="img-fluid"></a>
+                    <a href="{% url 'announcements' %}" class="mb-4 d-block"><img src="{{ ann.image.url }}"
+                            alt="{{ ann.title }}" class="img-fluid"></a>
                     <div class="media-body">
                         <span class="meta-post">{{ ann.date }}</span>
                         <h2 class="mt-0 mb-3">
-                            <a href="#">{{ ann.title }}</a>
+                            <a href="{% url 'announcements' %}">{{ ann.title|truncatechars:45 }}</a>
                         </h2>
-                        <p>
-                            {{ ann.description }}
-                        </p>
+                        {% if ann.content %}
+                        <p>{{ ann.content|truncatechars:120 }}</p>
+                        <a class="text-decoration-none text-dark font-weight-bold d-block mt-2"
+                            href="{% url 'announcements' %}">
+                            Devamını Oku →
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -348,7 +352,7 @@
                 <h2 class="text-white font-weight-bold">Rezervasyon için şimdi ara!</h2>
             </div>
             <div class="col-12 col-md-6 text-center text-md-right" data-aos="fade-up" data-aos-delay="200">
-                <a href="#" class="btn btn-outline-white-primary py-3 text-white px-5">+90 555 555 55 55</a>
+                <a href="#" class="btn btn-outline-white-primary py-3 text-white px-5">(0246) 441 28 22</a>
             </div>
         </div>
     </div>

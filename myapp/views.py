@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Room, GalleryImage, Announcement, MenuItem, HistoryEvent
 from .forms import ContactForm
+from django.shortcuts import render
+from .models import Announcement
 
 from .models import (
     Room, GalleryImage, Announcement, MenuItem,
@@ -47,3 +49,8 @@ def rooms(request):
 def room_detail(request, pk):
     room = Room.objects.get(pk=pk)
     return render(request, 'myapp/room_detail.html', {'room': room})
+
+def announcements_view(request):
+    # Sadece aktif olan duyuruları çekiyoruz
+    duyurular = Announcement.objects.filter(is_active=True)
+    return render(request, 'myapp/announcements.html', {'duyurular': duyurular})

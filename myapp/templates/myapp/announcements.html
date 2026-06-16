@@ -1,0 +1,64 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Duyurular - yalvacogretmenevi{% endblock %}
+
+{% block content %}
+<section class="site-hero inner-page overlay" style="background-image: url({% static 'myapp/images/hero_4.jpg' %});"
+    data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row site-hero-inner justify-content-center align-items-center">
+            <div class="col-md-10 text-center" data-aos="fade">
+                <h1 class="heading mb-3">Kurumsal Duyurular</h1>
+                <ul class="custom-breadcrumbs mb-4">
+                    <li><a href="{% url 'index' %}">Anasayfa</a></li>
+                    <li>&bullet;</li>
+                    <li>Duyurular</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section bg-light" id="duyuru-listesi">
+    <div class="container">
+        <div class="row">
+            {% if duyurular %}
+            {% for duyuru in duyurular %}
+            <div class="col-md-12 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
+                <div class="card border-0 shadow-sm rounded overflow-hidden">
+                    <div class="row no-gutters align-items-center">
+
+                        {% if duyuru.image %}
+                        <div class="col-md-4">
+                            <img src="{{ duyuru.image.url }}" alt="{{ duyuru.title }}" class="img-fluid w-100"
+                                style="object-fit: cover; height: 250px;">
+                        </div>
+                        {% endif %}
+
+                        <div class="{% if duyuru.image %}col-md-8{% else %}col-md-12{% endif %} p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary text-white px-3 py-1 rounded mr-3">
+                                    <small class="font-weight-bold">{{ duyuru.created_at|date:"d M Y" }}</small>
+                                </div>
+                            </div>
+                            <h3 class="text-black h4 mb-3">{{ duyuru.title }}</h3>
+                            <p class="text-muted" style="white-space: pre-line;">{{ duyuru.content }}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-md-12 text-center" data-aos="fade-up">
+                <div class="alert alert-info p-5">
+                    <span class="ion-ios-information-circle h1 d-block mb-3 text-primary"></span>
+                    <h4>Henüz yayınlanmış bir duyuru bulunmamaktadır.</h4>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

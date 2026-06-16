@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 from django.db import models
+from django.utils import timezone
 
 class Room(models.Model):
     name = models.CharField(max_length=100, verbose_name="Oda Adı")
@@ -129,3 +130,19 @@ class HomePageContent(models.Model):
     class Meta:
         verbose_name = "Anasayfa İçeriği"
         verbose_name_plural = "Anasayfa İçeriği"
+        
+class Announcement(models.Model):
+    title = models.CharField(max_length=200, verbose_name="Başlık")
+    content = models.TextField(verbose_name="İçerik", null=True, blank=True, default='')
+    # Yeni eklenen resim alanı: resimler otomatik olarak 'announcements/' klasörüne yüklenecek
+    image = models.ImageField(upload_to='announcements/', verbose_name="Duyuru Resmi", null=True, blank=True)
+    created_at = models.DateTimeField(default=timezone.now, verbose_name="Yayınlanma Tarihi")
+    is_active = models.BooleanField(default=True, verbose_name="Aktif mi?")
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Duyuru"
+        verbose_name_plural = "Duyurular"
+
+    def __str__(self):
+        return self.title
